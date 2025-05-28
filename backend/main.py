@@ -5,11 +5,11 @@ from datetime import date
 
 app = FastAPI()
 
-# In-memory DB substitute for now
+# garbage database example for now
 inventory = []
 
-# Define item schema
-class FoodItem(BaseModel):
+
+class FoodItem(BaseModel):  #we can add more stuff like type of food (fruit, meat), or whatever later
     name: str
     expiry_date: date
 
@@ -20,7 +20,7 @@ def get_items():
 @app.post("/items")
 def add_item(item: FoodItem):
     inventory.append(item)
-    return {"message": "Item added!", "item": item}
+    return {"message": "Item added", "item": item}
 
 @app.delete("/items/{item_index}")
 def delete_item(item_index: int):
